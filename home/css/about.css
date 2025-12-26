@@ -99,6 +99,23 @@ body {
     transition: color 0.3s ease;
 }
 
+.menu-space a.active {
+    /* 1. Set the background to solid black */
+    background-color: black; 
+    
+    /* 2. Set the text color to white */
+    color: white; 
+    
+    /* 3. Keep the "Doodle" rounded look */
+    border-radius: 15px;       
+    
+    /* 4. Adjust padding so the black box isn't too tight around the text */
+    padding: 5px 15px;         
+    
+    /* 5. Keep it bold to make it pop */
+    font-weight: bold;
+}
+
 .menu-space a:hover {
     color: #808080;
 }
