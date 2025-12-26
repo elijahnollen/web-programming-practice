@@ -1,0 +1,196 @@
+/* IMPORT SHANTELL SANS FROM GITHUB CDN */
+@font-face {
+    font-family: 'Shantell Sans';
+    src: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/fonts/ShantellSans%5BBNCE%2CINFM%2CSPAC%2Cital%2Cwght%5D.woff2') format('woff2-variations');
+    font-weight: 300 800;
+}
+
+
+
+/* 1. RESET & BODY */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 2. HEADER SECTION */
+.header-section {
+    background-image: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/header.svg'); 
+    background-size: cover;
+    background-position: center;
+    height: 15vh; /* This controls the height of your header */
+    flex-shrink: 0; 
+    
+    /* Center the text inside the header */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+.header-section h1 {
+    color: black;
+    font-family: 'Shantell Sans', cursive;
+    font-size: 3rem;
+    font-weight: 800;
+    font-variation-settings: "BNCE" 50, "INFM" 47;
+
+    /* The "Sticker" Look: Multiple shadows create a thick outline */
+     /* Thick White Outline */
+    text-shadow: 
+        -10px -10px 0 #fff,  
+         10px -10px 0 #fff,
+        -10px  10px 0 #fff,
+         10px  10px 0 #fff;
+}
+
+.menu-space {
+    margin-top: -20px; 
+    position: relative;
+    z-index: 10; 
+
+    background-color: white;
+    padding: 5px 0;
+    border-top: 3px solid black;    
+    border-bottom: 3px solid black; 
+
+    /* FIX 1: Use block and text-align right */
+    display: block; 
+    text-align: right; 
+
+    /* FIX 2: Scrolling properties */
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    /* Keeps scrollbar visible as requested */
+    scrollbar-width: thin; 
+}
+
+/* Scrollbar remains visible */
+.menu-space::-webkit-scrollbar {
+    height: 5px;
+    display: block;
+}
+.menu-space::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.menu-space a {
+    /* FIX 3: inline-block allows them to follow text-align: right */
+    display: inline-block;
+    
+    padding: 0 25px; 
+
+    text-decoration: none;
+    color: black;
+    font-family: 'Shantell Sans', cursive;
+    font-variation-settings: "wght" 400, "ital" 0.57, "INFM" 59, "BNCE" 21;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.menu-space a:hover {
+    color: #808080;
+}
+
+.background-container {
+    background-image: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/background.svg');
+    /* 'cover' makes the SVG fill the whole box, 'bottom' pins it to the floor */
+    background-size: cover;
+    background-position: bottom center; 
+    
+    flex: 1; 
+    display: flex;
+    align-items: flex-end; /* This pushes the character to the very bottom */
+    
+    /* Remove any gap-making properties */
+    padding: 0;
+    overflow: visible; 
+    /* 1. Pushes content to the RIGHT */
+    justify-content: flex-end; 
+}
+
+.left-character {
+    position: absolute; 
+    bottom: 0;         /* Forces the feet to touch the very bottom edge */
+    
+    height: 90vh;      /* Makes him tall */
+    width: auto;
+    
+    left: 0;
+    z-index: 20;
+    pointer-events: none;
+    display: block;
+}
+
+
+.content-area {
+    /* 1. Remove flex centering from the parent */
+    position: absolute; 
+    
+    /* 2. Move it to the TOP-RIGHT */
+    top: 170px;       /* Change this to 0px or even negative to go higher */
+    right: 0px;     /* Keeps it on the right side */
+    
+    width: auto;     /* Let the box decide its own width */
+    display: block;
+    z-index: 5;      /* Lower than character (20) so it goes behind her */
+}
+
+.custom-quote {
+    position: relative;
+    background-color: white;
+    padding: 35px 55px;
+    max-width: 500px; /* Smaller width makes it look more centered in its area */
+    
+    /* Doodle-style Border & Shadow */
+    border: 5px solid black;
+    border-radius: 45px;
+    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1); 
+    
+    /* Text Styling */
+    font-family: 'Shantell Sans', cursive;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* 4. The Top Left Quote Mark */
+.custom-quote::before {
+    content: "“";
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    font-size: 120px;
+    font-family: serif; /* Serifs usually have better quote shapes */
+    color: black;
+    background: white; /* Blocks the border line behind it */
+    padding: 0 10px;
+    height: 70px;
+    line-height: 140px;
+}
+
+/* 5. The Bottom Right Quote Mark */
+.custom-quote::after {
+    content: "”";
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    font-size: 120px;
+    font-family: serif;
+    color: black;
+    background: white;
+    padding: 0 10px;
+    height: 70px;
+    line-height: 140px;
+}
