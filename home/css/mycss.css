@@ -118,9 +118,7 @@ body {
     overflow: visible; 
     /* 1. Pushes content to the RIGHT */
     justify-content: flex-end; 
-    position: relative; /* THIS IS CRITICAL */
     width: 100%;
-    min-height: 85vh;
 }
 
 .left-character {
