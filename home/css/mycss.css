@@ -118,6 +118,9 @@ body {
     overflow: visible; 
     /* 1. Pushes content to the RIGHT */
     justify-content: flex-end; 
+    position: relative; /* THIS IS CRITICAL */
+    width: 100%;
+    min-height: 85vh;
 }
 
 .left-character {
@@ -140,7 +143,7 @@ body {
     
     /* 2. Move it to the TOP-RIGHT */
     top: 170px;       /* Change this to 0px or even negative to go higher */
-    right: 200px;     /* Keeps it on the right side */
+    right: 100px;     /* Keeps it on the right side */
     
     width: auto;     /* Let the box decide its own width */
     display: block;
