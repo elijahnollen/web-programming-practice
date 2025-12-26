@@ -24,7 +24,7 @@ body {
 
 /* 2. HEADER SECTION */
 .header-section {
-    background-image: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/header.svg'); 
+    background-image: url('../svg/header.svg'); 
     background-size: cover;
     background-position: center;
     height: 15vh; /* This controls the height of your header */
@@ -104,7 +104,7 @@ body {
 }
 
 .background-container {
-    background-image: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/background.svg');
+    background-image: url('../svg/background.svg');
     /* 'cover' makes the SVG fill the whole box, 'bottom' pins it to the floor */
     background-size: cover;
     background-position: bottom center; 
