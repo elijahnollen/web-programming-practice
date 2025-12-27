@@ -13,7 +13,7 @@
 /* The horizontal line */
 .timeline-line {
     position: absolute;
-    top: 60%;
+    top: 90%;
     width: max-content; /* Large width to allow scrolling */
     height: 2px;
     background: rgb(25, 23, 23);
@@ -57,7 +57,7 @@
     position: absolute;
     bottom: 40px; /* Positioned above the line */
     width: 240px;
-    background: rgba(255, 255, 255, 0.05);
+    background: #a0145a0d;
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 12px;
@@ -89,5 +89,13 @@
     color: black;
 }
 
-h3 { margin-bottom: 10px; font-size: 1.1rem; color: black; }
-p { font-size: 0.9rem; color: black; line-height: 1.4; }
+h3 { 
+    margin-bottom: 10px; 
+    font-size: 1.1rem; 
+    color: black; 
+}
+
+p { 
+    font-size: 0.9rem; 
+    color: black; 
+    line-height: 1.4; }

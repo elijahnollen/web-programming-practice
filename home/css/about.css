@@ -40,6 +40,22 @@
     overflow: visible;
 }
 
+/* --- BOTTOM HALF: Behind the menu --- */
+.body-behind {
+    z-index: 4; /* Lower than menu */
+}
+
+/* --- TOP HALF: Overlapping the menu --- */
+.head-overlap {
+    z-index: 10; /* Higher than menu */
+    
+    /* CLIP-PATH: This cuts the image horizontally.
+       inset(top right bottom left)
+       This hides the bottom 30% of the image so only 
+       the head/shoulders overlap the menu bar. */
+    clip-path: inset(0 0 30% 0); 
+}
+
 .content-area {
     position: absolute; 
     top: 10%; /* Using % is safer for different screen sizes */
