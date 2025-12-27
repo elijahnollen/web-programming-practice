@@ -1,0 +1,149 @@
+.gallery-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- THE WHEEL CONTAINER --- */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-wheel {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  /* The center of rotation is 800px below the top of the image */
+  transform-origin: center 800px;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transform: rotate(0deg);
+}
+
+/* --- GALLERY ITEMS (Doodle Style) --- */
+.gallery-item {
+  position: absolute;
+  background: white;
+  border: 3px solid black;
+  padding: 12px;
+  transform-origin: center 800px;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+/* Vertical Portrait */
+.gallery-item.vertical {
+  width: 300px;
+  height: 400px;
+  margin-left: -150px;
+  border-radius: 15px 50px 20px 45px / 45px 20px 50px 15px;
+}
+
+/* Horizontal Landscape */
+.gallery-item.horizontal {
+  width: 450px;
+  height: 300px;
+  margin-left: -225px;
+  border-radius: 40px 15px 55px 20px / 20px 55px 15px 40px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  transform: rotate(-1.5deg); /* Hand-tossed look */
+}
+
+/* Position 6 items around the wheel (60 degrees each) */
+.item-1 {
+  transform: rotate(0deg);
+}
+.item-2 {
+  transform: rotate(60deg);
+}
+.item-3 {
+  transform: rotate(120deg);
+}
+.item-4 {
+  transform: rotate(180deg);
+}
+.item-5 {
+  transform: rotate(240deg);
+}
+.item-6 {
+  transform: rotate(300deg);
+}
+
+/* --- CONTRAST NAVIGATION BUTTONS --- */
+.nav-btn {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.btn-prev {
+  left: 5%;
+}
+.btn-next {
+  right: 5%;
+}
+
+.nav-btn .arrow {
+  width: 75px;
+  height: 75px;
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 50% 45% 52% 48% / 48% 52% 45% 50%; /* Wobbly Circle */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-btn small {
+  margin-top: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: black;
+}
+
+/* Contrast Effect */
+.nav-btn:hover .arrow {
+  background-color: black;
+  color: white;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.nav-btn:active .arrow {
+  transform: scale(0.9) rotate(-5deg);
+}
+
+/* --- CAPTION --- */
+.gallery-caption {
+  position: absolute;
+  bottom: 100px;
+  font-size: 2.5rem;
+  font-weight: bold !important;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+}

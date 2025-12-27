@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/education.css">
     <link rel="stylesheet" href="css/skills.css">
     <link rel="stylesheet" href="css/hobbies.css">
+    <link rel="stylesheet" href="css/gallery.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,7 +28,7 @@
             <a href="#skills">Skills</a>
             <a href="#hobbies">Hobbies</a>
             <a href="#">Goals</a>
-            <a href="#">Picture Gallery</a>
+            <a href="#gallery">Picture Gallery</a>
         </nav>
         
         
@@ -144,6 +145,41 @@
                     </div>
                 </div>
             </section>
+            
+            <section id="gallery" class="gallery-section">
+                <button class="nav-btn btn-prev" onclick="rotateGallery('prev')">
+                    <span class="arrow"> < </span>
+                    <small>BACK</small>
+                </button>
+                <div class="gallery-container">
+                    <div class="gallery-wheel" id="wheel">
+                        <div class="gallery-item item-1 vertical">
+                            <img src="https://picsum.photos/300/400?random=1" alt="Portrait" />
+                        </div>
+                        <div class="gallery-item item-2 horizontal">
+                            <img src="https://picsum.photos/450/300?random=2" alt="Landscape" />
+                        </div>
+                        <div class="gallery-item item-3 vertical">
+                            <img src="https://picsum.photos/300/400?random=3" alt="Portrait" />
+                        </div>
+                        <div class="gallery-item item-4 horizontal">
+                            <img src="https://picsum.photos/450/300?random=4" alt="Landscape" />
+                        </div>
+                        <div class="gallery-item item-5 vertical">
+                            <img src="https://picsum.photos/300/400?random=5" alt="Portrait" />
+                        </div>
+                        <div class="gallery-item item-6 horizontal">
+                            <img src="https://picsum.photos/450/300?random=6" alt="Landscape" />
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-btn btn-next" onclick="rotateGallery('next')">
+                    <span class="arrow"> > </span>
+                    <small>NEXT</small>
+                </button>
+                <div class="gallery-caption" id="caption">The Gallery</div>
+            </section>
+
             
             
             

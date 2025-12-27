@@ -42,3 +42,21 @@ wrapper.addEventListener('click', (e) => {
         items.forEach(item => item.classList.remove('active'));
     }
 });
+
+
+let currentRotation = 0;
+const step = 60; // 360 / 6 items
+
+function rotateGallery(direction) {
+  const wheel = document.getElementById('wheel');
+
+  if (direction === 'next') {
+    // Counter-clockwise rotation
+    currentRotation -= step;
+  } else {
+    // Clockwise rotation
+    currentRotation += step;
+  }
+
+  wheel.style.transform = `rotate(${currentRotation}deg)`;
+}
