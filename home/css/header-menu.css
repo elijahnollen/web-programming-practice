@@ -1,0 +1,120 @@
+/* IMPORT SHANTELL SANS FROM GITHUB CDN */
+@font-face {
+    font-family: 'Shantell Sans';
+    src: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/fonts/ShantellSans%5BBNCE%2CINFM%2CSPAC%2Cital%2Cwght%5D.woff2') format('woff2-variations');
+    font-weight: 300 800;
+}
+
+/* 1. RESET & BASE STYLES */
+    /* 1. RESET & BODY */
+html {
+    height: 100%;}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white; /* Dark background to make colors pop */
+}
+
+
+/* 2. HEADER SECTION */
+.header-section {
+    position: sticky;
+    background-image: url('../svg/header.svg'); 
+    background-size: cover;
+    background-position: center;
+    height: 15vh; /* This controls the height of your header */
+    flex-shrink: 0; 
+    
+    /* Center the text inside the header */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+.header-section h1 {
+    color: black;
+    font-family: 'Shantell Sans', cursive;
+    font-size: 3rem;
+    font-weight: 800;
+    font-variation-settings: "BNCE" 50, "INFM" 47;
+
+    /* The "Sticker" Look: Multiple shadows create a thick outline */
+     /* Thick White Outline */
+    text-shadow: 
+        -10px -10px 0 #fff,  
+         10px -10px 0 #fff,
+        -10px  10px 0 #fff,
+         10px  10px 0 #fff;
+}
+
+.menu-space {
+    margin-top: -20px; 
+    position: sticky;
+    z-index: 10; 
+
+    background-color: white;
+    padding: 5px 0;
+    border-top: 3px solid black;    
+    border-bottom: 3px solid black; 
+
+    /* FIX 1: Use block and text-align right */
+    display: block; 
+    text-align: right; 
+
+    /* FIX 2: Scrolling properties */
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    /* Keeps scrollbar visible as requested */
+    scrollbar-width: thin; 
+}
+
+/* Scrollbar remains visible */
+.menu-space::-webkit-scrollbar {
+    height: 5px;
+    display: block;
+}
+.menu-space::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.menu-space a {
+    /* FIX 3: inline-block allows them to follow text-align: right */
+    display: inline-block;
+    
+    padding: 0 25px; 
+
+    text-decoration: none;
+    color: black;
+    font-family: 'Shantell Sans', cursive;
+    font-variation-settings: "wght" 400, "ital" 0.57, "INFM" 59, "BNCE" 21;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.menu-space a.active {
+    /* 1. Set the background to solid black */
+    background-color: black; 
+    
+    /* 2. Set the text color to white */
+    color: white; 
+    
+    /* 3. Keep the "Doodle" rounded look */
+    border-radius: 15px;       
+    
+    /* 4. Adjust padding so the black box isn't too tight around the text */
+    padding: 5px 15px;         
+    
+    /* 5. Keep it bold to make it pop */
+    font-weight: bold;
+}
+
+.menu-space a:hover {
+    color: #808080;
+}
