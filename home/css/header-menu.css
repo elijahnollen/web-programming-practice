@@ -23,15 +23,15 @@ body {
 
 /* --- 4. SECTION GLOBAL FIX --- */
 section {
-    min-height: 100vh;
+    min-height: auto; /* Changed from 100vh to fit content */
     width: 100%;
-    background-color: white; /* Shields against previous page content */
+    background-color: white; 
     position: relative;
-    z-index: 1; /* Keeps sections "behind" the navigation */
+    z-index: 1; 
     display: block;
     box-sizing: border-box;
-    /* When you click a link, this stops the header from covering the title */
-    scroll-margin-top: 20vh; 
+    scroll-margin-top: 10vh; /* Reduced margin for better laptop view */
+    padding: 40px 0; /* Adds some breathing room top/bottom */
 }
 
 .header-section {
