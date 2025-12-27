@@ -101,10 +101,10 @@ body {
 
 .menu-space a.active {
     /* 1. Set the background to solid black */
-    background-color: black !important;
+    background-color: black;
     
     /* 2. Set the text color to white */
-    color: white !important;
+    color: white;
     
     /* 3. Keep the "Doodle" rounded look */
     border-radius: 15px;       
