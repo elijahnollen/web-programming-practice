@@ -12,6 +12,7 @@ html {
 
 body {
     margin: 0;
+    position: relative;
     padding: 0;
     min-height: 100%;
     display: flex;
@@ -100,10 +101,10 @@ body {
 
 .menu-space a.active {
     /* 1. Set the background to solid black */
-    background-color: black; 
+    background-color: black !important;
     
     /* 2. Set the text color to white */
-    color: white; 
+    color: white !important;
     
     /* 3. Keep the "Doodle" rounded look */
     border-radius: 15px;       
