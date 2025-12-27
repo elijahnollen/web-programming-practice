@@ -94,9 +94,9 @@
 }
 
 h3 { 
-    margin-bottom: 10px; 
-    font-size: 1.1rem; 
-    color: black; 
+    margin-bottom: 10px !important; 
+    font-size: 1.3rem !important; 
+    color: black !important; 
 }
 
 p { 
