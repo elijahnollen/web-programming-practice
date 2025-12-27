@@ -1,5 +1,15 @@
+
+
 .background-container {
+    height: 80vh;
+    width: 100%;
+    position: relative; 
+    
+    /* CHANGE THIS: 'visible' allows the character to poke out of the top */
+    overflow: visible;
+    
     background-image: url('../svg/background.svg');
+
     /* 'cover' makes the SVG fill the whole box, 'bottom' pins it to the floor */
     background-size: cover;
     background-position: bottom center; 
@@ -10,36 +20,31 @@
     
     /* Remove any gap-making properties */
     padding: 0;
-    overflow: visible; 
+
     /* 1. Pushes content to the RIGHT */
-    justify-content: flex-end; 
+    justify-content: flex-end;   
+    
 }
 
 .left-character {
     position: absolute; 
     bottom: 0;         /* Forces the feet to touch the very bottom edge */
     
-    height: 90vh;      /* Makes him tall */
+    height: 88vh;      /* Makes him tall */
     width: auto;
     
     left: 0;
     z-index: 20;
     pointer-events: none;
     display: block;
+    overflow: visible;
 }
 
-
 .content-area {
-    /* 1. Remove flex centering from the parent */
     position: absolute; 
-    
-    /* 2. Move it to the TOP-RIGHT */
-    top: 170px;       /* Change this to 0px or even negative to go higher */
-    right: 10%;     /* Keeps it on the right side */
-    
-    width: auto;     /* Let the box decide its own width */
-    display: block;
-    z-index: 5;      /* Lower than character (20) so it goes behind her */
+    top: 10%; /* Using % is safer for different screen sizes */
+    right: 10%; 
+    z-index: 4;
 }
 
 .custom-quote {
