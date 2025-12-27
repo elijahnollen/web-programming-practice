@@ -138,7 +138,7 @@
     /* Doodle Effect: Irregular circle shape */
     border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%; 
     
-    padding: 15px; /* More space for the logo inside */
+    padding: 10px; /* More space for the logo inside */
     filter: grayscale(100%); 
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     object-fit: contain;
