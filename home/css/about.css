@@ -110,3 +110,57 @@
     height: 70px;
     line-height: 140px;
 }
+
+.social-links {
+    display: flex;
+    gap: 30px; /* Increased gap to account for larger icons */
+    margin-top: 25px;
+    justify-content: flex-end; /* Keeps them on the right side */
+}
+
+.social-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-decoration: none;
+}
+
+/* THE WHITE CIRCLE (Now Larger & Wobbly) */
+.social-icon img {
+    /* SIZE: Increased to 85px for high visibility */
+    width: 85px; 
+    height: 85px;
+    
+    background-color: white;
+    border: 3px solid black; 
+    
+    /* Doodle Effect: Irregular circle shape */
+    border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%; 
+    
+    padding: 15px; /* More space for the logo inside */
+    filter: grayscale(100%); 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    object-fit: contain;
+}
+
+/* The sketchy line below the larger circle */
+.scribble-line {
+    width: 0;
+    height: 3px;
+    border-bottom: 4px dashed black; 
+    margin-top: 10px;
+    transition: width 0.3s ease;
+}
+
+/* --- THE HOVER EFFECT --- */
+.social-icon:hover img {
+    transform: translateY(-10px) rotate(5deg);
+    filter: grayscale(0%);
+    /* The border wobbles slightly on hover */
+    border-radius: 45% 50% 48% 55% / 55% 48% 50% 45%;
+}
+
+.social-icon:hover .scribble-line {
+    width: 90%; /* Line scales with the bigger icon */
+}
