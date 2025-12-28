@@ -150,6 +150,6 @@
         --pivot-y: 400px;
     }
     
-    .btn-prev { left: 50%; }
-    .btn-next { right: 50%; }
+    .btn-prev { left: 10%; }
+    .btn-next { right: 10%; }
 }
