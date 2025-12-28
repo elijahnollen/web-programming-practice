@@ -1,64 +1,61 @@
-/* THE BOX CONTAINER */
+/* Main wrapper for the skills section with heavy shadow */
 .skills-container {
-    width: 95%; /* Slightly wider to fit bigger icons */
+    width: 95%;
     max-width: 1000px;
     margin: 90px auto;
-    background-color: white;
+    background: white !important;
     border: 5px solid black;
-    border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
+    border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
     padding: 40px;
-    box-shadow: 15px 15px 0px rgba(0,0,0,1); /* Solid black doodle shadow */
+    box-shadow: 15px 15px 0 #000;
 }
 
+/* Heading for the skills section */
 .skills-title {
-    font-family: 'Shantell Sans', cursive;
     text-align: center;
-    color: black;
+    color: black !important;
     margin-bottom: 40px;
     font-size: 2.5rem;
 }
 
-.skills-box {
-    position: relative;
-    background-color: white;
-    width: 100%;
-}
-
-/* THE GRID LAYER */
+/* Grid layout for organizing skill icons into columns */
 .base-layer {
     display: grid;
-    /* This creates 4 equal columns by default */
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px; 
-    justify-items: center; /* Centers icons in their grid cell */
+    justify-items: center;
     align-items: center;
 }
 
-/* BIGGER UNIFORM ICON SIZING */
+/* Uniform sizing and scaling animation for skill images */
 .skills-icon {
-    height: 120px; /* Increased size */
-    width: 120px;  /* Square aspect ratio for consistency */
-    object-fit: contain; /* Prevents stretching */
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
     transition: transform 0.2s ease-in-out;
 }
 
-/* Simple doodle-style hover effect since flashlight is gone */
+/* Hover effect to enlarge and tilt the icon */
 .skills-icon:hover {
     transform: scale(1.1) rotate(3deg);
 }
-/* RESPONSIVE: When screen shrinks, change from 4 columns to 2, then 1 */
+
 @media (max-width: 768px) {
     .base-layer {
-        grid-template-columns: repeat(2, 1fr); /* 2 per line for tablets */
+        grid-template-columns: repeat(2, 1fr);
     }
     .skills-icon {
-        height: 100px; /* Slightly smaller for mobile */
+        height: 100px;
         width: 100px;
     }
 }
 
 @media (max-width: 480px) {
     .base-layer {
-        grid-template-columns: repeat(1, 1fr); /* 1 per line for small phones */
+        grid-template-columns: 1fr;
+    }
+    .skills-container {
+        padding: 20px;
+        margin: 40px auto;
     }
 }

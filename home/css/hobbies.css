@@ -1,10 +1,10 @@
-
-/* --- 3. HOBBIES SECTION --- */
+/* Container for the hobbies section with vertical spacing */
 .hobbies-section {
     padding: 130px 0;
     text-align: center;
 }
 
+/* Flexible layout for aligning multiple hobby items in a row */
 .hobbies-grid {
     display: flex;
     justify-content: center;
@@ -12,15 +12,15 @@
     flex-wrap: wrap;
 }
 
+/* Vertical container for an individual hobby icon and its label */
 .hobby-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
     width: 180px;
 }
 
-/* Icon box without border as requested */
+/* Constrained box to align and center the hobby image icons */
 .hobby-icon-box {
     width: 100px;
     height: 100px;
@@ -28,22 +28,22 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    background: transparent;
 }
 
+/* Sizing and transition settings for hobby images */
 .hobby-icon-box img {
+    height: 150px;
     width: auto;
     margin-top: 50px;
-    height: 150px;
     transition: transform 0.3s ease;
 }
-        
-.hobby-item:hover .hobby-icon-box img {
+
+/* Subtle tilt and scale effect when hovering over a hobby */
+.hobby-item:hover img {
     transform: rotate(-5deg) scale(1.1);
 }
 
-
-/* THE DOODLE BUTTON (Double-Sketched Style) */
+/* Hand-drawn style button with an irregular border radius */
 .doodle-btn {
     all: unset;
     position: relative;
@@ -51,17 +51,15 @@
     font-weight: 800;
     font-size: 1.1rem;
     cursor: pointer;
-    margin-top: 60px; /* Moves the button down from the icon */
+    margin-top: 60px;
     display: inline-block;
-    color: black;
-    transition: all 0.3s ease;
-    
-    /* The first "sketchy" border */
+    color: black !important;
+    transition: 0.3s ease;
     border: 2px solid black;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
-/* The second "trace" border */
+/* secondary border for the doodle button to create a layered effect */
 .doodle-btn::after {
     content: "";
     position: absolute;
@@ -70,69 +68,60 @@
     right: -2px;
     bottom: 2px;
     border: 1.5px solid black;
-    /* A slightly different wobbly shape than the first border */
     border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
     z-index: -1;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
 }
 
-.doodle-btn:hover {
-    /* Subtle movement instead of contrast/shadow */
-    transform: scale(1.05) rotate(1deg);
-}
+/* trigger for the button and its shadow layer on hover */
+.doodle-btn:hover { transform: scale(1.05) rotate(1deg); }
 
 .doodle-btn:hover::after {
-    /* The two borders "shake" or shift slightly on hover */
     top: 2px;
     left: -4px;
     transform: rotate(-2deg);
 }
 
-.doodle-btn:active {
-    transform: scale(0.95);
-}
+/* Click feedback for the doodle button */
+.doodle-btn:active { transform: scale(0.95); }
 
-
-/* --- 4. MODAL STYLING --- */
+/* Overrides Bootstrap modal styles */
 .modal-content {
     border: 4px solid black !important;
-    border-radius: 0px !important; /* Sharp boxy doodle look */
-}
-        
-.modal-header {
-    border-bottom: 3px solid black !important;
-}
-        
-.modal-footer {
-    border-top: 3px solid black !important;
+    border-radius: 0 !important;
 }
 
-/* YOUR REQUESTED HOVER EFFECT */
+/* border for the modal header section */
+.modal-header { border-bottom: 3px solid black !important; }
+
+/* border for the modal footer section */
+.modal-footer { border-top: 3px solid black !important; }
+
+/* Container for movie cards within the hobby modal */
 .movie-item {
     margin-bottom: 20px;
     cursor: pointer;
 }
 
+/* Movie poster styling with border and smooth transitions */
 .movie-item img {
     width: 100%;
     border: 2px solid black;
     border-radius: 5px;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
     display: block;
 }
 
-/* The specific pop-up effect */
+/* Lift effect and hard shadow for movie posters on hover */
 .movie-item:hover img {
     transform: translateY(-8px); 
-    box-shadow: 8px 8px 0px black !important;
+    box-shadow: 8px 8px 0 black !important;
 }
 
+/* Styling for text labels under icons or images */
 .item-label {
     margin-top: 15px;
     font-weight: bold;
     font-size: 0.9rem;
-    color: black;
+    color: black !important;
 }
-
-
-

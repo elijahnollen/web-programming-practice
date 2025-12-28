@@ -1,166 +1,111 @@
-
-
+/* Container for the background image and absolute-positioned elements */
 .background-container {
     height: 80vh;
-    width: 100%;
-    position: relative; 
-    
-    /* CHANGE THIS: 'visible' allows the character to poke out of the top */
-    overflow: visible;
-    
-    background-image: url('../svg/background.svg');
-
-    /* 'cover' makes the SVG fill the whole box, 'bottom' pins it to the floor */
-    background-size: cover;
-    background-position: bottom center; 
-    
-    flex: 1; 
-    display: flex;
-    align-items: flex-end; /* This pushes the character to the very bottom */
-    
-    /* Remove any gap-making properties */
-    padding: 0;
-
-    /* 1. Pushes content to the RIGHT */
-    justify-content: flex-end;   
-    
+    position: relative;
+    background: url('../svg/background.svg') no-repeat bottom center / cover;
 }
 
+/* My image positioned at the left of the container */
 .left-character {
     position: absolute; 
-    bottom: 0;         /* Forces the feet to touch the very bottom edge */
-    
-    height: 88vh;      /* Makes him tall */
-    width: auto;
-    
+    bottom: 0;
     left: 0;
+    height: 88vh;
     z-index: 20;
     pointer-events: none;
-    display: block;
-    overflow: visible;
 }
 
-/* --- BOTTOM HALF: Behind the menu --- */
-.body-behind {
-    z-index: 4; /* Lower than menu */
+/* Background layer for overlapping elements */
+.body-behind { 
+    z-index: 4; 
 }
 
-/* --- TOP HALF: Overlapping the menu --- */
-.head-overlap {
-    z-index: 10; /* Higher than menu */
-    
-    /* CLIP-PATH: This cuts the image horizontally.
-       inset(top right bottom left)
-       This hides the bottom 30% of the image so only 
-       the head/shoulders overlap the menu bar. */
+/* Forefront layer with a cropped view for visual depth */
+.head-overlap { 
+    z-index: 10; 
     clip-path: inset(0 0 30% 0); 
 }
 
+/* Positioning wrapper for text and interactive content */
 .content-area {
     position: absolute; 
-    top: 10%; /* Using % is safer for different screen sizes */
+    top: 10%;
     right: 10%; 
     z-index: 4;
 }
 
+/* Stylized speech bubble or blockquote with borders and shadows */
 .custom-quote {
     position: relative;
-    background-color: white;
+    background: white !important;
     padding: 35px 55px;
-    max-width: 500px; /* Smaller width makes it look more centered in its area */
-    
-    /* Doodle-style Border & Shadow */
+    max-width: 650px;
     border: 5px solid black;
     border-radius: 45px;
-    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1); 
-    
-    /* Text Styling */
-    font-family: 'Shantell Sans', cursive;
-    font-size: 1.1rem;
-    line-height: 1.5;
+    box-shadow: 12px 12px 0 #0001;
     text-align: center;
 }
 
-/* 4. The Top Left Quote Mark */
-.custom-quote::before {
-    content: "“";
-    position: absolute;
-    top: -40px;
-    left: 20px;
-    font-size: 120px;
-    font-family: serif; /* Serifs usually have better quote shapes */
-    color: black;
-    background: white; /* Blocks the border line behind it */
-    padding: 0 10px;
-    height: 70px;
-    line-height: 140px;
-}
-
-/* 5. The Bottom Right Quote Mark */
+/* Common styles for opening and closing quotation marks */
+.custom-quote::before,
 .custom-quote::after {
-    content: "”";
     position: absolute;
-    bottom: -10px;
-    right: 20px;
-    font-size: 120px;
-    font-family: serif;
-    color: black;
+    font: 120px serif !important;
+    color: black !important;
     background: white;
-    padding: 0 10px;
     height: 70px;
     line-height: 140px;
+    padding: 0 10px;
 }
 
+.custom-quote::before { content: "“"; top: -40px; left: 20px; }
+.custom-quote::after { content: "”"; bottom: -10px; right: 20px; }
+
+/* Flexbox layout for social media navigation links */
 .social-links {
     display: flex;
-    gap: 30px; /* Increased gap to account for larger icons */
+    gap: 30px;
     margin-top: 25px;
-    justify-content: flex-end; /* Keeps them on the right side */
+    justify-content: flex-end;
 }
 
+/* Link wrapper for individual social media icons and labels */
 .social-icon {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center; 
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
-/* THE WHITE CIRCLE (Now Larger & Wobbly) */
+/* Hand-drawn style circular icons with grayscale filter */
 .social-icon img {
-    /* SIZE: Increased to 85px for high visibility */
     width: 85px; 
     height: 85px;
-    
-    background-color: white;
+    background: white !important;
     border: 3px solid black; 
-    
-    /* Doodle Effect: Irregular circle shape */
     border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%; 
-    
-    padding: 10px; /* More space for the logo inside */
+    padding: 10px;
     filter: grayscale(100%); 
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     object-fit: contain;
 }
 
-/* The sketchy line below the larger circle */
+/* Decorative animated line appearing under icons on hover */
 .scribble-line {
     width: 0;
-    height: 3px;
     border-bottom: 4px dashed black; 
     margin-top: 10px;
     transition: width 0.3s ease;
 }
 
-/* --- THE HOVER EFFECT --- */
+/* Interactive state for social icons: adds color and movement */
 .social-icon:hover img {
     transform: translateY(-10px) rotate(5deg);
     filter: grayscale(0%);
-    /* The border wobbles slightly on hover */
     border-radius: 45% 50% 48% 55% / 55% 48% 50% 45%;
 }
 
-.social-icon:hover .scribble-line {
-    width: 90%; /* Line scales with the bigger icon */
+/* Reveals the underline when the parent icon is hovered */
+.social-icon:hover .scribble-line { 
+    width: 90%; 
 }

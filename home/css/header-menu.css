@@ -1,4 +1,3 @@
-/* IMPORT SHANTELL SANS FROM GITHUB CDN */
 @font-face {
     font-family: 'Shantell Sans';
     src: url('https://cdn.jsdelivr.net/gh/elijahnollen/web-programming-practice@main/home/fonts/ShantellSans%5BBNCE%2CINFM%2CSPAC%2Cital%2Cwght%5D.woff2') format('woff2-variations');
@@ -7,124 +6,85 @@
 
 html {
     scroll-behavior: smooth;
-    height: auto; /* Allow the page to grow with content */
+    height: auto;
 }
 
 body {
     margin: 0;
-    padding: 0;
-    height: 100%;
+    min-height: 100vh;
     background-color: white !important;
     overflow-x: hidden;
     font-family: 'Shantell Sans', cursive !important;
 }
 
-/* --- 4. SECTION GLOBAL FIX --- */
 section {
-    min-height: 100vh; /* Changed from 100vh to fit content */
+    min-height: 100vh;
     width: 100%;
-    background-color: white; 
     position: relative;
-    z-index: 1; 
-    display: block;
+    z-index: 1;
     box-sizing: border-box;
-    scroll-margin-top: 10vh; /* Reduced margin for better laptop view */
-    padding: 40px 0; /* Adds some breathing room top/bottom */
+    scroll-margin-top: 10vh;
+    padding: 40px 0;
 }
 
+/* Container for header background svg */
 .header-section {
     position: sticky;
     top: 0;
     height: 15vh;
     width: 100%;
-    z-index: 100; /* Stays above everything */
-    background-color: white; 
-    background-image: url('../svg/header.svg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    z-index: 100;
+    background: white url('../svg/header.svg') no-repeat center / cover;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
+/* main title within the header */
 .header-section h1 {
-    color: black;
-    font-family: 'Shantell Sans', cursive;
+    color: black !important;
     font-size: 3rem;
     font-weight: 800;
     font-variation-settings: "BNCE" 50, "INFM" 47;
-
-    /* The "Sticker" Look: Multiple shadows create a thick outline */
-     /* Thick White Outline */
-    text-shadow: 
-        -10px -10px 0 #fff,  
-         10px -10px 0 #fff,
-        -10px  10px 0 #fff,
-         10px  10px 0 #fff;
+    text-shadow: -10px -10px 0 #fff, 10px -10px 0 #fff, -10px 10px 0 #fff, 10px 10px 0 #fff;
 }
 
-
+/* navigation bar container with borders */
 .menu-space {
     position: sticky;
-    top: 15vh; /* Locks exactly below the header */
+    top: 15vh;
     min-height: 6vh;
-    width: 100%;
-    z-index: 6; /* Just below header */
+    z-index: 6;
     background-color: white;
     padding: 6px 0;
-    border-top: 3px solid black;    
-    border-bottom: 3px solid black; 
-    display: block; 
-    text-align: right; 
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    text-align: right;
     overflow-x: auto;
     white-space: nowrap;
-    margin-top: -2px; 
 }
 
-/* Scrollbar remains visible */
-.menu-space::-webkit-scrollbar {
-    height: 5px;
-    display: block;
-}
-.menu-space::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
+/* Individual navigation links within the menu */
 .menu-space a {
-    /* FIX 3: inline-block allows them to follow text-align: right */
     display: inline-block;
-    
-    padding: 3px 25px; 
-
-    text-decoration: none;
-    color: black;
-    height: 100%;
-    font-family: 'Shantell Sans', cursive;
+    padding: 3px 25px;
+    text-decoration: none !important;
+    color: black !important;
     font-variation-settings: "wght" 400, "ital" 0.57, "INFM" 59, "BNCE" 21;
     font-size: 1.3rem;
     transition: color 0.3s ease;
-    line-height: 1
 }
 
+/* Highlighted state for the currently active menu link */
 .menu-space a.active {
-    /* 1. Set the background to solid black */
-    background-color: black;
-    
-    /* 2. Set the text color to white */
-    color: white;
-    
-    /* 3. Keep the "Doodle" rounded look */
-    border-radius: 15px;       
-    
-    /* 4. Adjust padding so the black box isn't too tight around the text */
-    padding: 5px 15px;         
-    
-    /* 5. Keep it bold to make it pop */
+    background-color: black !important;
+    color: white !important;
+    border-radius: 15px;
+    padding: 5px 15px;
     font-weight: bold;
 }
 
+/* Hover effect for navigation links */
 .menu-space a:hover {
     color: #808080;
 }
