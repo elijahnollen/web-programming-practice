@@ -91,8 +91,8 @@
     z-index: 100;
 }
 
-.btn-prev { left: 10%; }
-.btn-next { right: 10%; }
+.btn-prev { left: 30%; }
+.btn-next { right: 30%; }
 
 .nav-btn .arrow {
     width: clamp(50px, 15vw, 75px);
