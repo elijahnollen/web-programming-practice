@@ -83,10 +83,10 @@
 
 /* Hand-drawn style circular icons with grayscale filter */
 .social-icon img {
-    width: 85px; 
-    height: 85px;
+    width: 90px; 
+    height: 90px;
     background: white !important;
-    border: 3px solid black; 
+    border: 10px solid black; 
     border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%; 
     padding: 10px;
     filter: grayscale(100%); 
