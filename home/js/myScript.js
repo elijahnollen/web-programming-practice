@@ -1,58 +1,33 @@
 const wrapper = document.getElementById('wrapper');
 const line = document.getElementById('line');
-const items = document.querySelectorAll('.item');
 const dots = document.querySelectorAll('.dot');
+const items = document.querySelectorAll('.item');
 
-let isDragging = false;
-let startX;
-let scrollLeftTransform = 0;
+// --- Helper function to calculate movement ---
+function updateTimeline(clientX) {
+    const screenWidth = window.innerWidth;
+    const totalLineWidth = line.scrollWidth;
+    const scrollRange = totalLineWidth - screenWidth;
+    
+    // Calculate percentage of screen crossed (0 to 1)
+    const percentage = clientX / screenWidth;
+    const moveX = percentage * scrollRange;
+    
+    line.style.transform = `translateX(-${moveX}px)`;
+}
 
-// --- DESKTOP: Mouse Move (Hover to Scroll) ---
+// --- Desktop: Mouse Movement ---
 wrapper.addEventListener('mousemove', (e) => {
-    if (window.innerWidth > 1024) { // Only run hover-scroll on large screens
-        const screenWidth = window.innerWidth;
-        const totalLineWidth = line.scrollWidth;
-        const scrollRange = totalLineWidth - screenWidth;
-        
-        const moveX = (e.clientX / screenWidth) * scrollRange;
-        line.style.transform = `translateX(-${moveX}px)`;
-    }
+    updateTimeline(e.clientX);
 });
 
-// --- MOBILE: Touch Events (Drag to Scroll) ---
-wrapper.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    // Get the initial finger position
-    startX = e.touches[0].pageX;
-    // Get the current transform value (where the line is currently)
-    const style = window.getComputedStyle(line);
-    const matrix = new WebKitCSSMatrix(style.transform);
-    scrollLeftTransform = matrix.m41; 
-    
-    line.style.transition = 'none'; // Disable transition for instant feedback
-});
-
+// --- Mobile: Touch Movement ---
 wrapper.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    
-    const x = e.touches[0].pageX;
-    const walk = (x - startX) * 1.5; // Multiply by 1.5 for faster scrolling
-    let newTransform = scrollLeftTransform + walk;
+    // Prevent default scrolling behavior
+    updateTimeline(e.touches[0].clientX);
+}, { passive: true });
 
-    // Boundary Constraints
-    const maxScroll = -(line.scrollWidth - window.innerWidth);
-    if (newTransform > 0) newTransform = 0;
-    if (newTransform < maxScroll) newTransform = maxScroll;
-
-    line.style.transform = `translateX(${newTransform}px)`;
-});
-
-wrapper.addEventListener('touchend', () => {
-    isDragging = false;
-    line.style.transition = 'transform 0.3s ease-out'; // Bring back smooth motion
-});
-
-// --- Dot Interaction ---
+// --- Selection Logic ---
 dots.forEach((dot, index) => {
     dot.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -61,6 +36,7 @@ dots.forEach((dot, index) => {
     });
 });
 
+// --- Reset State ---
 wrapper.addEventListener('click', (e) => {
     if (e.target === wrapper || e.target === line) {
         items.forEach(item => item.classList.remove('active'));
