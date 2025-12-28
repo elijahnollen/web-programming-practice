@@ -32,6 +32,7 @@ section {
     position: sticky;
     top: 0;
     height: 15vh;
+    min-height: 80px; /* Ensures header doesn't get too small on tiny phones */
     width: 100%;
     z-index: 100;
     background: white url('../svg/header.svg') no-repeat center / cover;
@@ -40,51 +41,67 @@ section {
     align-items: center;
 }
 
-/* main title within the header */
+/* Main title within the header with responsive scaling */
 .header-section h1 {
     color: black !important;
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 8vw, 3rem); /* Dynamically scales between 1.5rem and 3rem */
     font-weight: 800;
     font-variation-settings: "BNCE" 50, "INFM" 47;
-    text-shadow: -10px -10px 0 #fff, 10px -10px 0 #fff, -10px 10px 0 #fff, 10px 10px 0 #fff;
+    text-shadow: -5px -5px 0 #fff, 5px -5px 0 #fff, -5px 5px 0 #fff, 5px 5px 0 #fff;
+    text-align: center;
+    padding: 0 15px;
 }
 
-/* navigation bar container with borders */
+/* Navigation bar container with horizontal scroll for mobile */
 .menu-space {
     position: sticky;
     top: 15vh;
     min-height: 6vh;
     z-index: 6;
     background-color: white;
-    padding: 6px 0;
+    padding: 8px 0;
     border-top: 3px solid black;
     border-bottom: 3px solid black;
-    text-align: right;
+    text-align: right; 
     overflow-x: auto;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
 }
 
-/* Individual navigation links within the menu */
+/* Individual navigation links */
 .menu-space a {
     display: inline-block;
-    padding: 3px 25px;
+    padding: 5px 15px;
     text-decoration: none !important;
     color: black !important;
     font-variation-settings: "wght" 400, "ital" 0.57, "INFM" 59, "BNCE" 21;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
-/* Highlighted state for the currently active menu link */
+/* Highlighted state for active link */
 .menu-space a.active {
     background-color: black !important;
     color: white !important;
-    border-radius: 15px;
-    padding: 5px 15px;
+    border-radius: 12px;
     font-weight: bold;
 }
 
-/* Hover effect for navigation links */
-.menu-space a:hover {
-    color: #808080;
+/* Media Query for Mobile adjustments */
+@media (max-width: 768px) {
+    .header-section {
+        height: 12vh;
+        z-index: 19;
+    }
+
+    .menu-space {
+        top: 12vh; /* Matches new header height */
+        text-align: left; /* Aligns to left so users see the start of the scrollable list */
+        padding-left: 10px;
+        z-index: 20
+    }
+
+    .header-section h1 {
+        text-shadow: -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
+    }
 }

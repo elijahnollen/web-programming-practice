@@ -1,11 +1,13 @@
 /* Container for the background image and absolute-positioned elements */
 .background-container {
-    height: 80vh;
+    min-height: 80vh;
     position: relative;
     background: url('../svg/background.svg') no-repeat bottom center / cover;
+    display: flex;
+    flex-direction: column;
 }
 
-/* My image positioned at the left of the container */
+/* Character image positioned at the left of the container */
 .left-character {
     position: absolute; 
     bottom: 0;
@@ -32,6 +34,8 @@
     top: 10%;
     right: 10%; 
     z-index: 4;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Stylized speech bubble or blockquote with borders and shadows */
@@ -105,7 +109,60 @@
     border-radius: 45% 50% 48% 55% / 55% 48% 50% 45%;
 }
 
-/* Reveals the underline when the parent icon is hovered */
 .social-icon:hover .scribble-line { 
     width: 90%; 
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    /* Hide the overlap layer so only body-behind is visible */
+    .head-overlap {
+        display: none !important;
+    }
+
+    .background-container {
+        height: auto;
+        padding-top: 0;
+    }
+
+    /* Keep image on the left, but overlap the menu above */
+    .left-character {
+        position: relative;
+        margin-top: -12vh; /* Pulls head into menu space */
+        left: 0;
+        height: 60vh; /* Adjust height for mobile screens */
+        width: auto;
+        display: block;
+        z-index: 20;
+    }
+
+    /* Content Area stacks below the image */
+    .content-area {
+        position: relative;
+        top: -5vh; /* Pulls the quote box up to touch the bottom of the character */
+        right: 0;
+        padding: 0 20px 40px;
+        align-items: center; /* Center the box and icons on small screens */
+        z-index: 25;
+    }
+
+    .custom-quote {
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+
+    /* Icons stack below the quote box */
+    .social-links {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    /* Scale down quote marks for mobile */
+    .custom-quote::before,
+    .custom-quote::after {
+        font-size: 80px !important;
+        height: 50px;
+        line-height: 100px;
+    }
 }
