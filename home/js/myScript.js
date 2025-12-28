@@ -1,29 +1,66 @@
-/* element references for the timeline and gallery components */
 const wrapper = document.getElementById('wrapper');
 const line = document.getElementById('line');
-const dots = document.querySelectorAll('.dot');
 const items = document.querySelectorAll('.item');
-const wheel = document.getElementById('wheel');
+const dots = document.querySelectorAll('.dot');
 
-/* Calculates and applies horizontal scroll position based on mouse movement across the screen */
+let isDragging = false;
+let startX;
+let scrollLeftTransform = 0;
+
+// --- DESKTOP: Mouse Move (Hover to Scroll) ---
 wrapper.addEventListener('mousemove', (e) => {
-    const screenWidth = window.innerWidth;
-    const startPos = items[0].offsetLeft - 100; 
-    const endPos = items[items.length - 1].offsetLeft + items[items.length - 1].offsetWidth - screenWidth + 100;
-
-    const moveX = startPos + ((e.clientX / screenWidth) * (endPos - startPos));
-    line.style.transform = `translateX(-${Math.max(0, moveX)}px)`;
+    if (window.innerWidth > 1024) { // Only run hover-scroll on large screens
+        const screenWidth = window.innerWidth;
+        const totalLineWidth = line.scrollWidth;
+        const scrollRange = totalLineWidth - screenWidth;
+        
+        const moveX = (e.clientX / screenWidth) * scrollRange;
+        line.style.transform = `translateX(-${moveX}px)`;
+    }
 });
 
-/* Manages selection state of timeline items when a navigation dot is clicked */
+// --- MOBILE: Touch Events (Drag to Scroll) ---
+wrapper.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    // Get the initial finger position
+    startX = e.touches[0].pageX;
+    // Get the current transform value (where the line is currently)
+    const style = window.getComputedStyle(line);
+    const matrix = new WebKitCSSMatrix(style.transform);
+    scrollLeftTransform = matrix.m41; 
+    
+    line.style.transition = 'none'; // Disable transition for instant feedback
+});
+
+wrapper.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.5; // Multiply by 1.5 for faster scrolling
+    let newTransform = scrollLeftTransform + walk;
+
+    // Boundary Constraints
+    const maxScroll = -(line.scrollWidth - window.innerWidth);
+    if (newTransform > 0) newTransform = 0;
+    if (newTransform < maxScroll) newTransform = maxScroll;
+
+    line.style.transform = `translateX(${newTransform}px)`;
+});
+
+wrapper.addEventListener('touchend', () => {
+    isDragging = false;
+    line.style.transition = 'transform 0.3s ease-out'; // Bring back smooth motion
+});
+
+// --- Dot Interaction ---
 dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
+    dot.addEventListener('click', (e) => {
+        e.stopPropagation();
         items.forEach(item => item.classList.remove('active'));
         items[index].classList.add('active');
     });
 });
 
-/* Resets the timeline state by hiding all active cards when clicking on empty space */
 wrapper.addEventListener('click', (e) => {
     if (e.target === wrapper || e.target === line) {
         items.forEach(item => item.classList.remove('active'));
